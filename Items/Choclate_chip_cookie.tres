@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b8fs6sewrt0ab"]
+
+[ext_resource type="Texture2D" uid="uid://dqkd00g6ri7of" path="res://Sprites/Items textures/cookie.png" id="1_8tko1"]
+[ext_resource type="Script" uid="uid://t2hko3ksc6te" path="res://Items/Item.gd" id="1_pqkx4"]
+
+[resource]
+script = ExtResource("1_pqkx4")
+item_name = "Choclate chip cookie"
+item_texture = ExtResource("1_8tko1")
+metadata/_custom_type_script = "uid://t2hko3ksc6te"

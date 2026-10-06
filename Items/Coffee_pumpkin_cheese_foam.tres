@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ccev6shy3l8rv"]
+
+[ext_resource type="Texture2D" uid="uid://cd1lcdju74k1l" path="res://Sprites/Items textures/coffee_cheese_foam.png" id="1_qw1wq"]
+[ext_resource type="Script" uid="uid://t2hko3ksc6te" path="res://Items/Item.gd" id="2_8di6f"]
+
+[resource]
+script = ExtResource("2_8di6f")
+item_name = "Pumpkin cheese foam latte"
+item_texture = ExtResource("1_qw1wq")
+metadata/_custom_type_script = "uid://t2hko3ksc6te"
