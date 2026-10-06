@@ -5,5 +5,4 @@
 
 [resource]
 script = ExtResource("2_rikdf")
-inventory_slots = Array[ExtResource("1_706ar")]([null])
 metadata/_custom_type_script = "uid://bv5lv5hnnvly6"

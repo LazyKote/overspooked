@@ -11,7 +11,6 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	if Input.is_action_just_pressed("test"):
-		InventoryManager.add_item()
-		
+	if Input.is_action_just_pressed("test2"):
+		InventoryManager.delete_item()	
 	
