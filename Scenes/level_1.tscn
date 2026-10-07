@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bqmctr5tvy0l1" path="res://Tilesets/Cafe_tileset.png" id="2_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://dw65c536hf2xc" path="res://Scenes/Player.tscn" id="2_xfk5q"]
 [ext_resource type="Script" uid="uid://bhqwk6olbbhat" path="res://Other scripts/fridge.gd" id="5_6444e"]
+[ext_resource type="PackedScene" uid="uid://dhdnl1qbb4378" path="res://Scenes/kitchen_item_inventory.tscn" id="7_lsmp6"]
+[ext_resource type="PackedScene" uid="uid://cx0ltqqja30u4" path="res://Scenes/npc.tscn" id="7_xrdnt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6444e"]
 texture = ExtResource("2_7p6j4")
@@ -46,10 +48,11 @@ tile_map_data = PackedByteArray("AAABAAIAAQABAAAAAAABAAMAAQABAAAAAAABAAQAAQABAAA
 tile_set = ExtResource("1_8ffim")
 
 [node name="Kitchen_tilemap" type="TileMapLayer" parent="." unique_id=964444771]
-tile_map_data = PackedByteArray("AAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAADAAEAAAAJAAEAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAADAAEAAAAJAAEAAAADAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_xywju")
 
 [node name="Player" parent="." unique_id=579423099 groups=["player"] instance=ExtResource("2_xfk5q")]
+z_index = 1
 position = Vector2(575, 321)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1691375777]
@@ -61,5 +64,22 @@ script = ExtResource("5_6444e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fridge" unique_id=1133623786]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_6ged0")
+
+[node name="Kitchen item inventory" parent="." unique_id=1783562485 instance=ExtResource("7_lsmp6")]
+visible = false
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 701.0
+offset_top = 99.0
+offset_right = 701.0
+offset_bottom = 99.0
+size_flags_horizontal = 4
+
+[node name="npc" parent="." unique_id=1710774646 instance=ExtResource("7_xrdnt")]
+position = Vector2(399, 372)
 
 [connection signal="body_entered" from="Fridge" to="Player" method="_on_fridge_body_entered"]

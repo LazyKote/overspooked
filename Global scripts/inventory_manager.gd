@@ -7,9 +7,8 @@ signal item_deleted
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory = load("res://Inventory/Inventory_slots.tres")
-	item = load("res://Items/Pumpkin_pie.tres")
 
-func add_item():
+func add_item(item):
 	inventory.inventory_slots.resize(1)
 	inventory.inventory_slots[0] = item
 	print(item.item_name)

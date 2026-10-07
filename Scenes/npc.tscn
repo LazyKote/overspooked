@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cx0ltqqja30u4"]
+
+[ext_resource type="Texture2D" uid="uid://df8sjdh5p4cf3" path="res://Sprites/blank_character.png" id="1_ideak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
+size = Vector2(20, 61)
+
+[node name="npc" type="Node2D" unique_id=1710774646]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1440531508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=814325826]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_6ged0")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=139771072]
+texture = ExtResource("1_ideak")

@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://dhdnl1qbb4378"]
 
+[ext_resource type="Texture2D" uid="uid://dqvxorx71w2tb" path="res://Sprites/invntory_slot.png" id="1_5ir5h"]
+[ext_resource type="Script" uid="uid://n111jtm1medi" path="res://Scenes/fridge_inventory_ui.gd" id="1_msk3a"]
+[ext_resource type="Resource" uid="uid://dkfpr7axn1fl6" path="res://Other resources/fridge_inventory.tres" id="2_781g0"]
+
 [node name="Kitchen item inventory" type="Control" unique_id=1783562485]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +11,137 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_msk3a")
+fridge_inv = ExtResource("2_781g0")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=983695472]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -34.5
+offset_right = 52.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+theme_override_constants/h_separation = 4
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer" unique_id=326715527]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect" unique_id=1688375366]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer" unique_id=84215461]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect2" unique_id=288671862]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer" unique_id=747424009]
+layout_mode = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect3" unique_id=822699699]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer" unique_id=1280673328]
+layout_mode = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect4" unique_id=548901687]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect5" type="TextureRect" parent="GridContainer" unique_id=1764055507]
+layout_mode = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect5" unique_id=1760920588]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect6" type="TextureRect" parent="GridContainer" unique_id=1049650667]
+layout_mode = 2
+texture = ExtResource("1_5ir5h")
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/TextureRect6" unique_id=1561067262]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="GridContainer/TextureRect/TextureButton" to="." method="_on_texture_button_pressed"]
