@@ -1,17 +1,41 @@
 [gd_scene format=3 uid="uid://cx0ltqqja30u4"]
 
 [ext_resource type="Texture2D" uid="uid://df8sjdh5p4cf3" path="res://Sprites/blank_character.png" id="1_ideak"]
+[ext_resource type="Script" uid="uid://dec01fyqrymva" path="res://Other scripts/npc.gd" id="1_xxsvc"]
+[ext_resource type="Resource" uid="uid://c0djfpnhrawf6" path="res://Items/all_items_list.tres" id="2_h1ryf"]
+[ext_resource type="PackedScene" uid="uid://yyeqrgbwdajr" path="res://Scenes/npc_interaction_ui.tscn" id="3_g6unj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
 size = Vector2(20, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4q0"]
+size = Vector2(28, 20)
+
 [node name="npc" type="Node2D" unique_id=1710774646]
+script = ExtResource("1_xxsvc")
+all_items_list = ExtResource("2_h1ryf")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1440531508]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1442024527]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=814325826]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=814325826]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_6ged0")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=139771072]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=139771072]
 texture = ExtResource("1_ideak")
+
+[node name="InteractionArea2D" type="Area2D" parent="CharacterBody2D" unique_id=862325271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea2D" unique_id=153419419]
+position = Vector2(1, 21)
+shape = SubResource("RectangleShape2D_ee4q0")
+
+[node name="Head" type="Node2D" parent="." unique_id=743914275]
+position = Vector2(1, -22)
+
+[node name="InteractionUi" parent="Head" unique_id=1904572027 instance=ExtResource("3_g6unj")]
+visible = false
+offset_left = -16.0
+offset_top = -43.0
+offset_right = 16.0
+offset_bottom = -11.0

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://boo61tjenrqo0"]
 
 [ext_resource type="PackedScene" uid="uid://dnssi8hu8tnyh" path="res://Scenes/inventory_slot.tscn" id="1_fyqef"]
+[ext_resource type="PackedScene" uid="uid://dqeggd5syqnu7" path="res://Scenes/money_ui.tscn" id="2_qdvrb"]
 
 [node name="UI" type="CanvasLayer" unique_id=1046608753]
 
@@ -12,3 +13,9 @@ anchor_right = 0.5
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
+
+[node name="Money" parent="." unique_id=484038035 instance=ExtResource("2_qdvrb")]
+offset_left = 192.0
+offset_top = -129.0
+offset_right = 192.0
+offset_bottom = -129.0

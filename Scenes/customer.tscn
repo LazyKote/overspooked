@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmr1uwwxobw2e"]
+
+[ext_resource type="Script" uid="uid://bg1ut21l5gai0" path="res://Other scripts/customer.gd" id="1_7c3kf"]
+[ext_resource type="PackedScene" uid="uid://cx0ltqqja30u4" path="res://Scenes/npc.tscn" id="1_fp685"]
+
+[node name="PathFollow2D" type="PathFollow2D" unique_id=2020495764]
+rotates = false
+loop = false
+script = ExtResource("1_7c3kf")
+
+[node name="npc" parent="." unique_id=1710774646 instance=ExtResource("1_fp685")]

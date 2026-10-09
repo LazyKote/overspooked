@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AllItemsList" format=3 uid="uid://c0djfpnhrawf6"]
+
+[ext_resource type="Script" uid="uid://t2hko3ksc6te" path="res://Items/Item.gd" id="1_devc8"]
+[ext_resource type="Script" uid="uid://bnj4k70w4jape" path="res://Items/All_items.gd" id="2_6x1pb"]
+[ext_resource type="Resource" uid="uid://dlpgvnehk6j20" path="res://Items/Pumpkin_pie.tres" id="2_cj8gp"]
+[ext_resource type="Resource" uid="uid://b8fs6sewrt0ab" path="res://Items/Choclate_chip_cookie.tres" id="3_d50y8"]
+[ext_resource type="Resource" uid="uid://ccev6shy3l8rv" path="res://Items/Coffee_pumpkin_cheese_foam.tres" id="4_7pjmx"]
+
+[resource]
+script = ExtResource("2_6x1pb")
+items_list = Array[ExtResource("1_devc8")]([ExtResource("2_cj8gp"), ExtResource("3_d50y8"), ExtResource("4_7pjmx")])
+metadata/_custom_type_script = "uid://bnj4k70w4jape"

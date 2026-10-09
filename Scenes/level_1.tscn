@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dw65c536hf2xc" path="res://Scenes/Player.tscn" id="2_xfk5q"]
 [ext_resource type="Script" uid="uid://bhqwk6olbbhat" path="res://Other scripts/fridge.gd" id="5_6444e"]
 [ext_resource type="PackedScene" uid="uid://dhdnl1qbb4378" path="res://Scenes/kitchen_item_inventory.tscn" id="7_lsmp6"]
-[ext_resource type="PackedScene" uid="uid://cx0ltqqja30u4" path="res://Scenes/npc.tscn" id="7_xrdnt"]
+[ext_resource type="Script" uid="uid://cl0ljk20d5mab" path="res://Other scripts/_queue.gd" id="7_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://dmr1uwwxobw2e" path="res://Scenes/customer.tscn" id="8_wrinw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6444e"]
 texture = ExtResource("2_7p6j4")
@@ -39,6 +40,12 @@ sources/0 = SubResource("TileSetAtlasSource_6444e")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
 size = Vector2(64, 20)
 
+[sub_resource type="Curve2D" id="Curve2D_lsmp6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 384.07745, 606, 0, 0, 0, 0, 388.05533, 388, 0, 0, 0, 0, 517.3361, 389, 0, 0, 0, 0, 518.3497, 430.88196, 0, 0, 0, 0, 512.3638, 614)
+}
+point_count = 5
+
 [node name="Node2D" type="Node2D" unique_id=371882469]
 
 [node name="UI" parent="." unique_id=1046608753 instance=ExtResource("1_7p6j4")]
@@ -48,7 +55,7 @@ tile_map_data = PackedByteArray("AAABAAIAAQABAAAAAAABAAMAAQABAAAAAAABAAQAAQABAAA
 tile_set = ExtResource("1_8ffim")
 
 [node name="Kitchen_tilemap" type="TileMapLayer" parent="." unique_id=964444771]
-tile_map_data = PackedByteArray("AAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAADAAEAAAAJAAEAAAADAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAADAAEAAAAJAAEAAAADAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAAGAAIAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_xywju")
 
 [node name="Player" parent="." unique_id=579423099 groups=["player"] instance=ExtResource("2_xfk5q")]
@@ -79,7 +86,15 @@ offset_right = 701.0
 offset_bottom = 99.0
 size_flags_horizontal = 4
 
-[node name="npc" parent="." unique_id=1710774646 instance=ExtResource("7_xrdnt")]
-position = Vector2(399, 372)
+[node name="Path2D" type="Path2D" parent="." unique_id=397133110 node_paths=PackedStringArray("path")]
+position = Vector2(-6.214203, 0)
+scale = Vector2(1.0055633, 1)
+curve = SubResource("Curve2D_lsmp6")
+script = ExtResource("7_xrdnt")
+customer_scene = ExtResource("8_wrinw")
+path = NodePath(".")
+counter_ratios = Array[float]([0.4, 0.5, 0.6])
+queue_spacing = 0.05
+max_customers = 3
 
 [connection signal="body_entered" from="Fridge" to="Player" method="_on_fridge_body_entered"]

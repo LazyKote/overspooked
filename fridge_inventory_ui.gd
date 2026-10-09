@@ -40,11 +40,9 @@ func refresh() -> void:
 
 
 func _on_slot_pressed(index: int) -> void:
-	print("pressed slot ", index)
 	if fridge_inv == null:
 		return
 	var item = fridge_inv.fridge_inventory[index]
-	print(item)
 	if item == null:
 		return
 	InventoryManager.add_item(item)

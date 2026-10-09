@@ -7,4 +7,5 @@
 script = ExtResource("1_pqkx4")
 item_name = "Choclate chip cookie"
 item_texture = ExtResource("1_8tko1")
+item_cost = 20
 metadata/_custom_type_script = "uid://t2hko3ksc6te"

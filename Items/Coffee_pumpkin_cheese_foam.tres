@@ -7,4 +7,5 @@
 script = ExtResource("2_8di6f")
 item_name = "Pumpkin cheese foam latte"
 item_texture = ExtResource("1_qw1wq")
+item_cost = 10
 metadata/_custom_type_script = "uid://t2hko3ksc6te"

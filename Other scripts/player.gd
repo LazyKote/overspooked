@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 const speed = 300.0
 
-
 func get_input():
 	var input_dir = Input.get_vector("go_left", "go_right", "go_up", "go_down")
 	velocity = input_dir * speed

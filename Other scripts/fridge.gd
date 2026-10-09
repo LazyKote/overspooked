@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("test"):
+	if event.is_action_pressed("interact"):
 		for body in get_overlapping_bodies():
 			if body.is_in_group("player"):
 				if fridge_ui.visible == false:
