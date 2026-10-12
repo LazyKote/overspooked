@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://mmthhj0r0j03" path="res://Other scripts/player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://df8sjdh5p4cf3" path="res://Sprites/blank_character.png" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://3kolfjw7hhnc" path="res://Scenes/flashlight.gd" id="3_dewec"]
+[ext_resource type="Texture2D" uid="uid://buyyvi8id2l46" path="res://flashlight.png" id="3_gntrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(22, 11)
@@ -17,3 +19,19 @@ shape = SubResource("RectangleShape2D_kyqiw")
 texture_filter = 1
 position = Vector2(-1, 0)
 texture = ExtResource("1_xhfnw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=840509205]
+
+[node name="Flashlight" type="Node2D" parent="." unique_id=601768941]
+script = ExtResource("3_dewec")
+
+[node name="PointLight2D" type="PointLight2D" parent="Flashlight" unique_id=842415679]
+texture = ExtResource("3_gntrk")
+
+[node name="DetectionArea" type="Area2D" parent="Flashlight" unique_id=1507924896]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight/DetectionArea" unique_id=494319621]
+rotation = 1.5707964
+polygon = PackedVector2Array(0, 0, 200, -115, 200, 115)

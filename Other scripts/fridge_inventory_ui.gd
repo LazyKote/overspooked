@@ -1,11 +1,13 @@
 extends Control
 
-@export var fridge_inv: FridgeInventory
+var fridge_inv: FridgeInventory
 
 @onready var grid: GridContainer = $GridContainer
 
 var _slots: Array[TextureRect] = []
 var _buttons: Array[TextureButton] = []
+
+signal animation_change(item)
 
 func _ready() -> void:
 	_collect_slots()
@@ -16,6 +18,10 @@ func _ready() -> void:
 	if fridge_inv:
 		fridge_inv.changed.connect(refresh)
 
+	#refresh()
+
+func load_inventory(fridge_inventory_res):
+	fridge_inv = fridge_inventory_res
 	refresh()
 
 func _collect_slots() -> void:
@@ -42,7 +48,8 @@ func refresh() -> void:
 func _on_slot_pressed(index: int) -> void:
 	if fridge_inv == null:
 		return
-	var item = fridge_inv.fridge_inventory[index]
-	if item == null:
-		return
-	InventoryManager.add_item(item)
+	var inv: Array = fridge_inv.fridge_inventory
+	if index >= 0 and index < inv.size() and inv[index] != null:
+		var item = inv[index]
+		animation_change.emit(item)
+		visible = false

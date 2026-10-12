@@ -21,8 +21,11 @@ func delete_item():
 		emit_signal("item_deleted")
 		
 func item_check():
-	var current_item = 	inventory.inventory_slots[0]
-	return(current_item)
+	if inventory.inventory_slots.size() > 0:
+		var current_item = 	inventory.inventory_slots[0]
+		return(current_item)
+	else:
+		return
 
 func money_add(money_added):
 	money+=money_added

@@ -8,8 +8,7 @@ func get_input():
 	velocity = input_dir * speed
 
 func _physics_process(delta):
+
 	get_input()
 	move_and_slide()
-	if Input.is_action_just_pressed("test2"):
-		InventoryManager.delete_item()	
 	

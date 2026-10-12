@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://lsnwjefk2ol"]
+
+[ext_resource type="Shader" uid="uid://7ny4nycuayyl" path="res://new_shader_material.gdshader" id="1_50bgh"]
+
+[resource]
+shader = ExtResource("1_50bgh")
+shader_parameter/cone_angle_deg = 60.0000028025
+shader_parameter/edge_softness = 0.25
+shader_parameter/falloff_start = 0.0
+shader_parameter/falloff_end = 1.0

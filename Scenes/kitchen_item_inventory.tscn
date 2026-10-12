@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dhdnl1qbb4378"]
 
 [ext_resource type="Texture2D" uid="uid://dqvxorx71w2tb" path="res://Sprites/invntory_slot.png" id="1_5ir5h"]
-[ext_resource type="Script" uid="uid://n111jtm1medi" path="res://fridge_inventory_ui.gd" id="1_msk3a"]
-[ext_resource type="Resource" uid="uid://dkfpr7axn1fl6" path="res://Other resources/fridge_inventory.tres" id="2_781g0"]
+[ext_resource type="Script" uid="uid://n111jtm1medi" path="res://Other scripts/fridge_inventory_ui.gd" id="1_msk3a"]
 
 [node name="Kitchen item inventory" type="Control" unique_id=1783562485]
 layout_mode = 3
@@ -13,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_msk3a")
-fridge_inv = ExtResource("2_781g0")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=983695472]
 custom_minimum_size = Vector2(105, 0)

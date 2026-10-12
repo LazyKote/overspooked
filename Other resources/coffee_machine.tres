@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FridgeInventory" format=3 uid="uid://ctrlr8ve1wiwh"]
+
+[ext_resource type="Script" uid="uid://t2hko3ksc6te" path="res://Items/Item.gd" id="1_m2hk8"]
+[ext_resource type="Script" uid="uid://c2akpg340x8q4" path="res://Other scripts/fridge_inventory.gd" id="2_22myf"]
+[ext_resource type="Resource" uid="uid://ccev6shy3l8rv" path="res://Items/Coffee_pumpkin_cheese_foam.tres" id="2_p88q4"]
+
+[resource]
+script = ExtResource("2_22myf")
+fridge_inventory = Array[ExtResource("1_m2hk8")]([ExtResource("2_p88q4")])
+metadata/_custom_type_script = "uid://c2akpg340x8q4"

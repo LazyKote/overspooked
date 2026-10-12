@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d1y1jfvp01ie4"]
+
+[ext_resource type="Script" uid="uid://t2hko3ksc6te" path="res://Items/Item.gd" id="1_f6vt0"]
+[ext_resource type="Texture2D" uid="uid://bvxs5vqdps66d" path="res://Sprites/Items textures/cookie_raw.png" id="1_vauka"]
+[ext_resource type="Resource" uid="uid://b8fs6sewrt0ab" path="res://Items/Choclate_chip_cookie.tres" id="2_wli3e"]
+
+[resource]
+script = ExtResource("1_f6vt0")
+item_name = "Cookie dough"
+item_texture = ExtResource("1_vauka")
+can_be_processed = true
+processed_version = ExtResource("2_wli3e")
+metadata/_custom_type_script = "uid://t2hko3ksc6te"

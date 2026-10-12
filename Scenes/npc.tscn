@@ -9,7 +9,7 @@
 size = Vector2(20, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4q0"]
-size = Vector2(28, 20)
+size = Vector2(28, 100)
 
 [node name="npc" type="Node2D" unique_id=1710774646]
 script = ExtResource("1_xxsvc")
@@ -27,7 +27,7 @@ texture = ExtResource("1_ideak")
 [node name="InteractionArea2D" type="Area2D" parent="CharacterBody2D" unique_id=862325271]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea2D" unique_id=153419419]
-position = Vector2(1, 21)
+position = Vector2(1, -19)
 shape = SubResource("RectangleShape2D_ee4q0")
 
 [node name="Head" type="Node2D" parent="." unique_id=743914275]
@@ -35,7 +35,7 @@ position = Vector2(1, -22)
 
 [node name="InteractionUi" parent="Head" unique_id=1904572027 instance=ExtResource("3_g6unj")]
 visible = false
-offset_left = -16.0
-offset_top = -43.0
-offset_right = 16.0
-offset_bottom = -11.0
+offset_left = -1.0
+offset_top = -65.0
+offset_right = 63.0
+offset_bottom = -1.0
