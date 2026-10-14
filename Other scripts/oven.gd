@@ -26,7 +26,16 @@ func _unhandled_input(event):
 			else:
 				cooking()
 			break
+func pause_timer() -> void:
+	if current_state == CMState.WORKING:
+		cooking_timer.paused = true
+		anim.speed_scale = 0.0        # чтобы «working» тоже замер
 
+func resume_timer() -> void:
+	if current_state == CMState.WORKING:
+		cooking_timer.paused = false
+		anim.speed_scale = 1.0
+		
 func cooking():
 	_pending_item = InventoryManager.item_check()
 	if _pending_item.can_be_processed == true:

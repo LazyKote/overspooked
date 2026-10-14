@@ -33,5 +33,4 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight/DetectionArea" unique_id=494319621]
-rotation = 1.5707964
-polygon = PackedVector2Array(0, 0, 200, -115, 200, 115)
+polygon = PackedVector2Array(0, 0, 210, -129, 210, 129)

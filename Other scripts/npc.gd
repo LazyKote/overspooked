@@ -2,6 +2,7 @@ extends Node2D
 @onready var npc_ui = $Head/InteractionUi
 @onready var interaction_area = $CharacterBody2D/InteractionArea2D
 @onready var path = $"../.."
+@onready var waiting_timer = $Timer
 @export var all_items_list : AllItemsList
 var order
 var current_item
@@ -11,6 +12,7 @@ var at_counter: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	order = all_items_list.items_list.pick_random()
+	waiting_timer.timeout.connect(on_waiting_timer_out)
 
 func set_at_counter(value: bool) -> void:
 	at_counter = value
@@ -22,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if npc_ui.visible == false:
 					npc_ui.visible = true
 					npc_ui.order_ui_refresh(order)
+					waiting_timer.start()
 				else:
 					current_item = InventoryManager.item_check()
 					if current_item != null:
@@ -30,6 +33,9 @@ func _unhandled_input(event: InputEvent) -> void:
 						pass
 				break
 
+func on_waiting_timer_out():
+	order_served.emit()
+	
 func get_order(item):
 	if order == item:
 		npc_ui.visible = false

@@ -39,3 +39,6 @@ offset_left = -1.0
 offset_top = -65.0
 offset_right = 63.0
 offset_bottom = -1.0
+
+[node name="Timer" type="Timer" parent="." unique_id=62653177]
+wait_time = 20.0

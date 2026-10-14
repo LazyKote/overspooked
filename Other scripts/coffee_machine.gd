@@ -2,6 +2,7 @@ extends Area2D
 @onready var coffee_machine_ui = $"CanvasLayer/Kitchen item inventory"
 @onready var anim = $AnimatedSprite2D
 @onready var brew_timer = $Timer
+var _is_lit: bool = false
 
 @export var coffee_machine_inventory : FridgeInventory
 
@@ -29,11 +30,13 @@ func _unhandled_input(event):
 			break
 
 func pause_timer() -> void:
+	_is_lit = true
 	if current_state == CMState.WORKING:
 		brew_timer.paused = true
 		anim.speed_scale = 0.0        # чтобы «working» тоже замер
 
 func resume_timer() -> void:
+	_is_lit = false
 	if current_state == CMState.WORKING:
 		brew_timer.paused = false
 		anim.speed_scale = 1.0
@@ -44,7 +47,12 @@ func on_animation_change(item):
 	_pending_item = item
 	current_state = CMState.WORKING
 	anim.play("working")
-	brew_timer.start()
+	if _is_lit:
+		brew_timer.start()
+		brew_timer.paused = true
+		anim.speed_scale = 0.0
+	else:
+		brew_timer.start()
 
 func _on_brew_finished() -> void:
 	anim.play("default")

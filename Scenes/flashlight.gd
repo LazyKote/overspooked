@@ -7,7 +7,6 @@ func _ready() -> void:
 	detection_area.area_exited.connect(_on_area_exited)
 
 func _process(_delta: float) -> void:
-	# Направление на мышь
 	var mouse := get_global_mouse_position()
 	var dir := mouse - global_position
 	global_rotation = dir.angle()
