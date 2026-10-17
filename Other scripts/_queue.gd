@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var doorbell = $AudioStreamPlayer2D
+
 @export var customer_scene: PackedScene
 @export var path: Path2D
 
@@ -45,6 +47,7 @@ func _spawn() -> void:
 	c.left_cafe.connect(_on_customer_left)
 	customers.append(c)
 	_spawned_total += 1
+	doorbell.play()
 	_assign_slots()
 
 func _on_customer_left(c: PathFollow2D) -> void:

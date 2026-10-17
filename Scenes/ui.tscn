@@ -16,6 +16,6 @@ size_flags_vertical = 8
 
 [node name="Money" parent="." unique_id=484038035 instance=ExtResource("2_qdvrb")]
 offset_left = 192.0
-offset_top = -129.0
+offset_top = -106.0
 offset_right = 192.0
-offset_bottom = -129.0
+offset_bottom = -106.0

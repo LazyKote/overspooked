@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://d1o0srji23g3a"]
+
+[ext_resource type="Script" uid="uid://48tfabto8ny0" path="res://Other scripts/level_passed.gd" id="1_2y83q"]
+[ext_resource type="FontFile" uid="uid://bv6iyhg23l100" path="res://Fonts/monogram-extended.ttf" id="2_26moe"]
+[ext_resource type="Texture2D" uid="uid://bxph0gtspp73" path="res://Sprites/button.png" id="3_k16cw"]
+[ext_resource type="Texture2D" uid="uid://ds47h5cm14upc" path="res://Sprites/button_pressed.png" id="4_o25ro"]
+[ext_resource type="AudioStream" uid="uid://c72h2ywi4sx0a" path="res://Audio/Music/menu.mp3" id="5_26moe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ged0"]
+bg_color = Color(1, 0.9019608, 0.6627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkl0d"]
+bg_color = Color(1, 0.7019608, 0.4745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8392157, 0.4627451, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u1v3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5dsh"]
+texture = ExtResource("3_k16cw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dpicm"]
+texture = ExtResource("4_o25ro")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofbnr"]
+texture = ExtResource("3_k16cw")
+
+[node name="Control" type="Control" unique_id=85699188]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2y83q")
+
+[node name="Panel" type="Panel" parent="." unique_id=1109730796]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ged0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=953036182]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer" unique_id=580593318]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lkl0d")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Panel" unique_id=2010703371]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -28.5
+offset_right = 113.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Panel/MarginContainer" unique_id=1216539223]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=602706287]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_26moe")
+theme_override_font_sizes/font_size = 18
+text = "That was our games's alpha! 
+Thank you for playing Overspooked.
+We really hope you liked it"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1777640902]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_7u1v3")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=458038070]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_26moe")
+theme_override_font_sizes/font_size = 18
+text = "Developed by Not-So-Beery Gamers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="Panel/VBoxContainer" unique_id=473393178]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_26moe")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_t5dsh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dpicm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ofbnr")
+text = "Return
+"
+
+[node name="BackGroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1968700592]
+stream = ExtResource("5_26moe")
+parameters/looping = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/Return" to="." method="_on_return_pressed"]

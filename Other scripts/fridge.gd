@@ -3,13 +3,14 @@ extends Area2D
 @onready var fridge_ui = $"CanvasLayer/Kitchen item inventory"
 @export var fridge_inventory : FridgeInventory
 @onready var anim = $AnimatedSprite2D
+@onready var fridge_open_sound = $FridgeOpenSound
+@onready var fridge_closing_sound = $FridgeClosingSound
 
 enum CMState{
 	IDLE,
 	WORKING
 }
 var current_state : CMState = CMState.IDLE
-var _pending_item: Item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,14 +23,14 @@ func _unhandled_input(event):
 				if fridge_ui.visible == false:
 					fridge_ui.load_inventory(fridge_inventory)
 					fridge_ui.visible = true
+					anim.play("working")
+					fridge_open_sound.play()
 				else:
 					fridge_ui.visible = false
+					anim.play("default")
 				break
 
 func on_animation_change(item):
-	if current_state != CMState.IDLE:
-		return
-	_pending_item = item
-	current_state = CMState.WORKING
-	anim.play("working")
-	InventoryManager.add_item(_pending_item)
+	InventoryManager.add_item(item)
+	anim.play("default")
+	fridge_closing_sound.play()

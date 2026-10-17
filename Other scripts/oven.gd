@@ -1,14 +1,19 @@
 extends Area2D
 @onready var anim = $AnimatedSprite2D
 @onready var cooking_timer = $Timer
+@onready var cooking_ui = $CanvasLayer/TextureRect
+@onready var ghost = $Ghost
+@onready var oven_sound = $AudioStreamPlayer2D
+
 # Called when the node enters the scene tree for the first time.
 enum CMState{
 	IDLE,
-	WORKING
+	WORKING,
+	READY
 }
 var current_state : CMState = CMState.IDLE
-var _pending_item: Item = null
-var item: Item = null
+var _pending_item: Item = null 
+var _result_item: Item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,39 +25,52 @@ func _unhandled_input(event):
 		return
 	for body in get_overlapping_bodies():
 		if body.is_in_group("player"):
-			_pending_item = InventoryManager.item_check()
-			if _pending_item == null:
-				return
-			else:
-				cooking()
+			match current_state:
+				CMState.READY:
+					_collect_item()
+				CMState.IDLE:
+					_try_start_cooking()
+				CMState.WORKING:
+					pass
 			break
+
 func pause_timer() -> void:
+	ghost.play("scared")
 	if current_state == CMState.WORKING:
 		cooking_timer.paused = true
-		anim.speed_scale = 0.0        # чтобы «working» тоже замер
+		anim.speed_scale = 0.0 
 
 func resume_timer() -> void:
+	ghost.play("default")
 	if current_state == CMState.WORKING:
 		cooking_timer.paused = false
 		anim.speed_scale = 1.0
 		
-func cooking():
-	_pending_item = InventoryManager.item_check()
-	if _pending_item.can_be_processed == true:
-		item = _pending_item.processed_version
-		InventoryManager.delete_item()
-		on_animation_change()
-	else:
+func _try_start_cooking() -> void:
+	var ingredient = InventoryManager.item_check()
+	if ingredient == null or not ingredient.can_be_processed:
 		return
+	_pending_item = ingredient
+	_result_item = ingredient.processed_version
+	InventoryManager.delete_item()
+	_start_cooking()
 
-func on_animation_change():
-	if current_state != CMState.IDLE:
-		return
+func _start_cooking() -> void:
 	current_state = CMState.WORKING
 	anim.play("working")
+	oven_sound.play()
 	cooking_timer.start()
 
-func _on_cooking_finished() -> void:
-	anim.play("default")
+func _collect_item() -> void:
+	if _result_item == null:
+		return
+	InventoryManager.add_item(_result_item)
+	_result_item = null
 	current_state = CMState.IDLE
-	InventoryManager.add_item(item)
+	anim.play("default")
+	cooking_ui.visible = false
+
+func _on_cooking_finished() -> void:
+	current_state = CMState.READY
+	cooking_ui.visible = true 
+	_pending_item = null

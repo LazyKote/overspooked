@@ -3,7 +3,9 @@ extends Node2D
 @onready var interaction_area = $CharacterBody2D/InteractionArea2D
 @onready var path = $"../.."
 @onready var waiting_timer = $Timer
+@onready var waiting_bar  = $Head/TextureProgressBar
 @export var all_items_list : AllItemsList
+
 var order
 var current_item
 signal order_served
@@ -13,9 +15,16 @@ var at_counter: bool = false
 func _ready() -> void:
 	order = all_items_list.items_list.pick_random()
 	waiting_timer.timeout.connect(on_waiting_timer_out)
+	waiting_bar.max_value = waiting_timer.wait_time
+	waiting_bar.value = waiting_timer.wait_time
 
 func set_at_counter(value: bool) -> void:
 	at_counter = value
+
+func _process(_delta: float) -> void:
+	if waiting_timer.is_stopped():
+		return
+	waiting_bar.value = waiting_timer.time_left
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
@@ -24,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if npc_ui.visible == false:
 					npc_ui.visible = true
 					npc_ui.order_ui_refresh(order)
-					waiting_timer.start()
+					_start_waiting()
 				else:
 					current_item = InventoryManager.item_check()
 					if current_item != null:
@@ -33,14 +42,25 @@ func _unhandled_input(event: InputEvent) -> void:
 						pass
 				break
 
-func on_waiting_timer_out():
+func _start_waiting() -> void:
+	waiting_timer.start()
+	waiting_bar.max_value = waiting_timer.wait_time
+	waiting_bar.value = waiting_timer.wait_time
+	waiting_bar.visible = true
+
+func _stop_waiting() -> void:
+	waiting_timer.stop()
+	waiting_bar.visible = false
+
+func on_waiting_timer_out() -> void:
+	_stop_waiting()
+	npc_ui.visible = false
 	order_served.emit()
-	
-func get_order(item):
+
+func get_order(item) -> void:
 	if order == item:
 		npc_ui.visible = false
 		InventoryManager.delete_item()
 		InventoryManager.money_add(item.item_cost)
+		_stop_waiting()
 		order_served.emit()
-	else:
-		pass

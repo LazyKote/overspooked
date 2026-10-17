@@ -4,12 +4,15 @@
 [ext_resource type="Script" uid="uid://dec01fyqrymva" path="res://Other scripts/npc.gd" id="1_xxsvc"]
 [ext_resource type="Resource" uid="uid://c0djfpnhrawf6" path="res://Items/all_items_list.tres" id="2_h1ryf"]
 [ext_resource type="PackedScene" uid="uid://yyeqrgbwdajr" path="res://Scenes/npc_interaction_ui.tscn" id="3_g6unj"]
+[ext_resource type="Texture2D" uid="uid://supmwegcww75" path="res://Sprites/progress_bar_behind.png" id="5_2xkex"]
+[ext_resource type="Texture2D" uid="uid://cc453s1lxhui1" path="res://Sprites/progress_bar_above.png" id="6_8gudg"]
+[ext_resource type="Texture2D" uid="uid://wbx6jm8jsbh1" path="res://Sprites/progress_bar_inside.png" id="7_qi7up"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
 size = Vector2(20, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4q0"]
-size = Vector2(28, 100)
+size = Vector2(36, 140)
 
 [node name="npc" type="Node2D" unique_id=1710774646]
 script = ExtResource("1_xxsvc")
@@ -27,7 +30,7 @@ texture = ExtResource("1_ideak")
 [node name="InteractionArea2D" type="Area2D" parent="CharacterBody2D" unique_id=862325271]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea2D" unique_id=153419419]
-position = Vector2(1, -19)
+position = Vector2(1, -39)
 shape = SubResource("RectangleShape2D_ee4q0")
 
 [node name="Head" type="Node2D" parent="." unique_id=743914275]
@@ -39,6 +42,23 @@ offset_left = -1.0
 offset_top = -65.0
 offset_right = 63.0
 offset_bottom = -1.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Head" unique_id=1008850191]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -22.0
+offset_right = 57.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("5_2xkex")
+texture_over = ExtResource("6_8gudg")
+texture_progress = ExtResource("7_qi7up")
 
 [node name="Timer" type="Timer" parent="." unique_id=62653177]
 wait_time = 20.0

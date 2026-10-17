@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bquvhxsfcaxgm"]
+
+[ext_resource type="Texture2D" uid="uid://bxph0gtspp73" path="res://Sprites/button.png" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://bd8xxby703l6j" path="res://Sprites/logo.png" id="1_ce3w2"]
+[ext_resource type="Script" uid="uid://cymrg07dbqauk" path="res://Scenes/main_menu.gd" id="1_n45e2"]
+[ext_resource type="Texture2D" uid="uid://ds47h5cm14upc" path="res://Sprites/button_pressed.png" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://bv6iyhg23l100" path="res://Fonts/monogram-extended.ttf" id="2_n45e2"]
+[ext_resource type="AudioStream" uid="uid://c72h2ywi4sx0a" path="res://Audio/Music/menu.mp3" id="6_opfnp"]
+[ext_resource type="AudioStream" uid="uid://dem0p1o70b0fv" path="res://Audio/Sounds/ui_click2.wav" id="7_cp0ys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ged0"]
+bg_color = Color(1, 0.9019608, 0.6627451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkl0d"]
+texture = ExtResource("1_ce3w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ged0"]
+texture = ExtResource("1_28flt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48xlc"]
+texture = ExtResource("2_48xlc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ehe0"]
+texture = ExtResource("1_28flt")
+
+[node name="Control" type="Control" unique_id=1689227286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n45e2")
+
+[node name="Panel" type="Panel" parent="." unique_id=1129364852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ged0")
+
+[node name="GameLogo" type="Panel" parent="Panel" unique_id=1777545096]
+custom_minimum_size = Vector2(415, 74)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = 11.0
+offset_right = 208.0
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lkl0d")
+
+[node name="VBoxContainerButtons" type="VBoxContainer" parent="Panel" unique_id=705828219]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 64.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Panel/VBoxContainerButtons" unique_id=463919313]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_n45e2")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ged0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ehe0")
+text = "Play
+"
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainerButtons" unique_id=696007989]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_n45e2")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ged0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ehe0")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainerButtons" unique_id=1861120243]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_n45e2")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ged0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ehe0")
+text = "Exit
+"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=942944749]
+stream = ExtResource("6_opfnp")
+autoplay = true
+parameters/looping = true
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="." unique_id=732458872]
+stream = ExtResource("7_cp0ys")
+
+[connection signal="pressed" from="Panel/VBoxContainerButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainerButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainerButtons/Exit" to="." method="_on_exit_pressed"]

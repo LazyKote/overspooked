@@ -30,3 +30,5 @@ func item_check():
 func money_add(money_added):
 	money+=money_added
 	money_changed.emit(money)
+	if money == 200:
+		get_tree().change_scene_to_file("res://Scenes/level_passed.tscn")
